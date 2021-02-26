@@ -1,5 +1,5 @@
 <?php
 
 // Heading
-$_['heading_title']        = 'QuickPay Sofort';
-$_['text_quickpay_sofort'] = '<a target="_blank" href="https://quickpay.net"><img style="height: 30px;" src="view/image/extension/payment/quickpay.svg" alt="Quickpay" title="Quickpay" style="border: 1px solid #EEEEEE;" /></a>';
+$_['heading_title']        = QUICKPAY_NAME . ' Sofort';
+$_['text_quickpay_sofort'] = '<a target="_blank" href="' . QUICKPAY_LINK . '"><img style="height: 30px;" src="' . QUICKPAY_LOGO . '" alt="' . QUICKPAY_NAME . '" title="' . QUICKPAY_NAME . '" style="border: 1px solid #EEEEEE;" /></a>';

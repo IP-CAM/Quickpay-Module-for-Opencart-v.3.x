@@ -2,9 +2,18 @@
 <modification>
 	<name>QuickPay</name>
 	<code>quickpay</code>
-	<version>1.0.5</version>
+	<version>1.0.7</version>
 	<author>QuickPay ApS</author>
 	<link>https://quickpay.net</link>
+	
+	<file path="system/engine/loader.php">
+		<operation>
+			<search><![CDATA[$this->registry = $registry;]]></search>
+			<add position="after">
+			require_once(DIR_SYSTEM . 'library/quickpay/config.php');
+			</add>
+		</operation>
+	</file>
 
   	<file path="admin/controller/sale/order.php">
 		<operation>
@@ -44,6 +53,8 @@
 		                        }
 		                    }
 							
+							$data['quickpay']['name'] = QUICKPAY_NAME;
+							$data['quickpay']['manager_url'] = QUICKPAY_URL_MANAGER;
 		                    $data['quickpay']['test_mode'] = !empty($payment->test_mode) ? true : false;
 		                    $data['quickpay']['transaction_id'] = $payment->id;
 		                    $data['quickpay']['cardnumber'] = str_pad($payment->metadata->last4, 19, '**** ', STR_PAD_LEFT);
@@ -94,7 +105,7 @@
 					                        if ($capture->accepted) {
 					                            $json['success'] = true;
 					                        } else {
-					                            $json['error'] = 'Capturering failed. Please check transaction in QuickPay Manager';
+					                            $json['error'] = 'Capturering failed. Please check transaction in ' . QUICKPAY_NAME . ' Manager';
 					                        }
 					                    } else if ($action == 'refund') {
 					                        $capture = $quickpay->request->post('/payments/' . (int)$transaction_id . '/refund', [ 'amount' => $amount ])->asObject();
@@ -102,7 +113,7 @@
 					                        if ($capture->accepted) {
 					                            $json['success'] = true;
 					                        } else {
-					                            $json['error'] = 'Refunding failed. Please check transaction in QuickPay Manager';
+					                            $json['error'] = 'Refunding failed. Please check transaction in ' . QUICKPAY_NAME . ' Manager';
 					                        }
 					                    }
 									} else {
@@ -142,7 +153,7 @@
                 </style>
 				<div id="quickpay-manager" class="panel panel-default">
 		          <div class="panel-heading">
-		            <h3 class="panel-title"><i class="fa fa-credit-card"></i> QuickPay Manager <a href="https://manage.quickpay.net" target="_blank" class="btn btn-xs btn-default pull-right"><i class="fa fa-external-link"></i> Go to QuickPay Manager</a></h3>
+		            <h3 class="panel-title"><i class="fa fa-credit-card"></i> {{ quickpay.name }} Manager <a href="{{ quickpay.manager_url }}" target="_blank" class="btn btn-xs btn-default pull-right"><i class="fa fa-external-link"></i> Go to {{ quickpay.name }} Manager</a></h3>
 		          </div>
 		          <table class="table">
 		            <tr>
