@@ -28,7 +28,7 @@ trait Controller {
        
 		$this->load->language( 'extension/payment/' . $this->getInstanceName() );
 
-		return $this->load->view( 'extension/payment/quickpay', [] );
+		return $this->load->view( 'extension/payment/quickpay', ['instanceName' => $this->getInstanceName()] );
 	}
 
 	/**

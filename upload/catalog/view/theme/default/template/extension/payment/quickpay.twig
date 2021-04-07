@@ -8,9 +8,9 @@
 	$('#button-confirm').on('click', function() {
 
 		$.ajax({
-			url: 'index.php?route=extension/payment/quickpay/payment_link',
+			url: 'index.php?route=extension/payment/{{ instanceName }}/payment_link',
 			type: 'post',
-			data: $('#payment :input'),
+			data: $('input[name="payment_method"]:checked'),
 			dataType: 'json',
 			cache: false,
 			beforeSend: function() {
@@ -22,7 +22,7 @@
 			success: function(json) {
 			    if (json['error']) {
                     alert(json['error']);
-                    return;			     
+                    return;
 			    }
                 
 				if (json['redirect']) {
