@@ -29,7 +29,7 @@
 			  	if (!empty($transaction_id)) {
 			  		require DIR_SYSTEM . 'library/quickpay/quickpay.php';
 			  
-			  		$quickpay = new QuickPay\\QuickPay($this->registry);
+			  		$quickpay = new QuickPay\QuickPay($this->registry);
 
 					if ($quickpay) {
 						$client = $quickpay->api(':' . $api_key);
@@ -92,7 +92,7 @@
 							if (!empty($api_key)) {
 								require DIR_SYSTEM . 'library/quickpay/quickpay.php';
 						  
-						  		$quickpay = new QuickPay\\QuickPay($this->registry);
+						  		$quickpay = new QuickPay\QuickPay($this->registry);
 
 								if ($quickpay) {
 									$client = $quickpay->api(':' . $api_key);
