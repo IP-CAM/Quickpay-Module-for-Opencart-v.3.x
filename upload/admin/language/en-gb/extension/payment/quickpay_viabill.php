@@ -1,4 +1,5 @@
 <?php
+require_once DIR_SYSTEM . 'library/quickpay/config.php';
 
 // Heading
 $_['heading_title']         = QUICKPAY_NAME . ' ViaBill';

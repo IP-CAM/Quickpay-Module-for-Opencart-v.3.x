@@ -9,6 +9,10 @@ class ModelExtensionPaymentQuickPayKlarna extends \Model {
 
 	use Model;
 
+	public function getMethod( $address, $total ) {
+		return $this->getMethodData( $address, $total, '_klarna'  );
+	}
+
 	/**
 	 * Return the name of the payment instance
 	 *

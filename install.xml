@@ -18,7 +18,7 @@
   	<file path="admin/controller/sale/order.php">
 		<operation>
             <search index="2"><![CDATA[$data['api_token'] = '';]]></search>
-		  	<add position="after" offset="1">
+		  	<add position="after" offset="1"><![CDATA[
 			$data['quickpay'] = [];
 
 			$api_key = $this->config->get('payment_quickpay_api_key');
@@ -29,7 +29,7 @@
 			  	if (!empty($transaction_id)) {
 			  		require DIR_SYSTEM . 'library/quickpay/quickpay.php';
 			  
-			  		$quickpay = new QuickPay\QuickPay($this->registry);
+			  		$quickpay = new QuickPay\\QuickPay($this->registry);
 
 					if ($quickpay) {
 						$client = $quickpay->api(':' . $api_key);
@@ -71,11 +71,11 @@
 					}
 			  	}
 			}
-		    </add>
+		    ]]></add>
         </operation>
 		<operation>
 			<search index="0"><![CDATA[protected function validate() {]]></search>
-			<add position="before" offset="0">
+			<add position="before" offset="0"><![CDATA[
 			public function quickpay() {
 		        $json = [];
 				
@@ -92,7 +92,7 @@
 							if (!empty($api_key)) {
 								require DIR_SYSTEM . 'library/quickpay/quickpay.php';
 						  
-						  		$quickpay = new QuickPay\QuickPay($this->registry);
+						  		$quickpay = new QuickPay\\QuickPay($this->registry);
 
 								if ($quickpay) {
 									$client = $quickpay->api(':' . $api_key);
@@ -128,7 +128,7 @@
 		        $this->response->addHeader('Content-Type: application/json');
 				$this->response->setOutput(json_encode($json));
 		    }
-			</add>
+			]]></add>
 		</operation>
     </file>
 	
@@ -226,7 +226,7 @@
 		                        }
 		            		},
 		            		error: function(xhr, ajaxOptions, thrownError) {
-		            			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		            			alert(thrownError + " " + xhr.statusText + " " + xhr.responseText);
 		            		}
 		            	});
 		            }
@@ -247,7 +247,7 @@
 		                        }
 		                    },
 		                    error: function(xhr, ajaxOptions, thrownError) {
-		                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		                        alert(thrownError + " " + xhr.statusText + " " + xhr.responseText);
 		                    }
 		                });
 		            }
@@ -258,9 +258,9 @@
 		</operation>
 		<operation>
 			<search index="0"><![CDATA[<h3 class="panel-title"><i class="fa fa-cog"></i> {{ text_option }}</h3>]]></search>
-			<add position="after" offset="44">
+			<add position="after" offset="44"><![CDATA[
 			{% endif %}
-			</add>
+			]]></add>
 		</operation>
 	</file>
 </modification>

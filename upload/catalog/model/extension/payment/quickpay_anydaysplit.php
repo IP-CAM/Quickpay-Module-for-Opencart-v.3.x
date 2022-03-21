@@ -3,14 +3,14 @@
 use QuickPay\Catalog\Model;
 
 /**
- * Class ModelExtensionPaymentQuickPayViabill
+ * Class ModelExtensionPaymentQuickPayAnydaysplit
  */
-class ModelExtensionPaymentQuickPayViabill extends \Model {
+class ModelExtensionPaymentQuickPayAnydaysplit extends \Model {
 
 	use Model;
 
 	public function getMethod( $address, $total ) {
-		return $this->getMethodData( $address, $total, '_viabill'  );
+		return $this->getMethodData( $address, $total, '_anydaysplit'  );
 	}
 
 	/**
@@ -19,7 +19,7 @@ class ModelExtensionPaymentQuickPayViabill extends \Model {
 	 * @return string
 	 */
 	public function getInstanceName() {
-		return 'quickpay_viabill';
+		return 'quickpay_anydaysplit';
 	}
 
 	/**
@@ -29,7 +29,7 @@ class ModelExtensionPaymentQuickPayViabill extends \Model {
 	 */
 	public function getPaymentLinkData() {
 		return [
-			'payment_methods' => 'viabill',
+			'payment_methods' => 'anyday-split',
 		];
 	}
 

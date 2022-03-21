@@ -9,6 +9,10 @@ class ModelExtensionPaymentQuickPaySofort extends \Model {
 
 	use Model;
 
+	public function getMethod( $address, $total ) {
+		return $this->getMethodData( $address, $total, '_sofort'  );
+	}
+
 	/**
 	 * Return the name of the payment instance
 	 *

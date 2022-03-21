@@ -2,6 +2,8 @@
 
 namespace QuickPay\API;
 
+require_once DIR_SYSTEM . 'library/quickpay/config.php';
+
 /**
  * @class      QuickPay_Request
  * @since      0.1.0

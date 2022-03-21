@@ -1,3 +1,9 @@
+### 1.0.9 - 2022-03-21
+- Fix: PHP warnings in PHP 7.4
+- Fix: Return correct code for specific payment method
+- Fix: OCMod not accepting backlash in 3.0.3.8
+- Feature: Add Anyday Split as separate payment method
+
 ### 1.0.8 - 2021-04-07
 - Fix: Separate payment options
 
