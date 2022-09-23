@@ -29,7 +29,7 @@ class ModelExtensionPaymentQuickPayKlarna extends \Model {
 	 */
 	public function getPaymentLinkData() {
 		return [
-			'payment_methods' => 'klarna',
+			'payment_methods' => 'klarna-payments',
 		];
 	}
 
